@@ -1,4 +1,4 @@
-package com.group.libraryapp.lec02;
+package lec02;
 
 // 2강. 테스트 코드란 무엇인가?! 그리고 왜 필요한가?!
 // 1. 테스트 코드란 무엇인가?!
