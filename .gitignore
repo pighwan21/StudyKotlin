@@ -1,0 +1,4 @@
+/library-app/build/
+/library-app/.gradle/
+/.idea/
+/library-app/gradle/
