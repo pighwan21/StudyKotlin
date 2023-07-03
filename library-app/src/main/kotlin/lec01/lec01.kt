@@ -1,4 +1,4 @@
-package com.group.libraryapp.lec01;
+package lec01;
 
 // 1강. 도서관리 애플리케이션 리팩토링 준비하기 목표(도서관리 애플리케이션 이해하기)
 // 목표 : Java로 만들어진 프로젝트를 Koltin으로 리펙토링 한 후 새로운 요구사항을 구현!
