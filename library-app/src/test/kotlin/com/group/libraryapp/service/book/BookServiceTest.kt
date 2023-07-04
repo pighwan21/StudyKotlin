@@ -50,7 +50,8 @@ class BookServiceTest @Autowired constructor(
     @DisplayName("책 대출이 정상 동작한다.")
     fun loanBookTest() {
         // given
-        bookRepository.save(Book("늑대와 향신료"))
+        bookRepository.save(Book("늑대와 향신료"))    // 여긴 코틀린 코드이기 때문에 default parameter를 인식해서
+                                                          // 따로 id부분을 적어주지않아도 됨.
         val savedUser = userRepository.save(User("호로", null))
         val request = BookLoanRequest("호로", "늑대와 향신료")
 
