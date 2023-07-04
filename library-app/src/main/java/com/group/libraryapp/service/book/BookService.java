@@ -30,7 +30,8 @@ public class BookService {
 
   @Transactional
   public void saveBook(BookRequest request) {
-    Book newBook = new Book(request.getName());
+    Book newBook = new Book(request.getName(), null); // Java에서는 default parameter를 인식하지 못하기 때문에
+                                                          // id에 그냥 null을 적어주었음
     bookRepository.save(newBook);
   }
 
