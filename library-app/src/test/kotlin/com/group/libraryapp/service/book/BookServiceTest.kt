@@ -87,7 +87,12 @@ class BookServiceTest @Autowired constructor(
     fun returnBookTest() {
         // given
         bookRepository.save(Book("세상의 중심에서 사랑을 외치다"))
-        val savedUser = userRepository.save(User("나가사와 마사미", 19))
+        val savedUser = userRepository.save(
+            User(
+                "나가사와 마사미",
+                19
+            )
+        )
         userLoanHistoryRepository.save(UserLoanHistory(savedUser, "세상의 중심에서 사랑을 외치다", false))
         val request = BookReturnRequest("나가사와 마사미", "세상의 중심에서 사랑을 외치다")
 
