@@ -1,4 +1,4 @@
-package lec07
+package lec
 
 // 7강. Junit으로 Spring Boot 테스트 하기
 

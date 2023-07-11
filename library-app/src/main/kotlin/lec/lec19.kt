@@ -1,4 +1,4 @@
-package lec19
+package lec
 
 // 19강. Controller 계층을 Koltin으로 변경하기
 

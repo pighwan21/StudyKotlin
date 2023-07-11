@@ -1,4 +1,4 @@
-package lec03;
+package lec;
 
 // 3강. 코틀린 코드 작성 준비하기
 // - build.gradle에 kotlin 관련 코드 추가

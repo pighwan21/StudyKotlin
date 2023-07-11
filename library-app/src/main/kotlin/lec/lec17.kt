@@ -1,4 +1,4 @@
-package lec17
+package lec
 
 // 17강
 // optional을 제거하고 엘비스 연산자를 사용

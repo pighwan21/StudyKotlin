@@ -1,4 +1,4 @@
-package lec09
+package lec
 
 // 9강. 책 관련 기능 테스트 작성하기
 

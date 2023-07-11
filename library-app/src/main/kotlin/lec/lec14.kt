@@ -1,4 +1,4 @@
-package lec14
+package lec
 
 // 14강. Kotlin과 JPA를 함께 사용할 때 이야기거리 3가지
 // 1. setter에 관한 이야기

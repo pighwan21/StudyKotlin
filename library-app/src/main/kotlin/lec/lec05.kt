@@ -1,4 +1,4 @@
-package lec05;
+package lec;
 
 // 5강. 사칙연산 계산기의 나눗셈 테스트 작성
 

@@ -1,4 +1,4 @@
-package lec10
+package lec
 
 // 10강. 테스트 작성 끝! 다음으로!
 

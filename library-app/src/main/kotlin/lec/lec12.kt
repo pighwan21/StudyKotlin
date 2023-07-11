@@ -1,4 +1,4 @@
-package lec12
+package lec
 
 // 12강. 도메인 계층을 Kotlin으로 변경하기 - Book.java
 

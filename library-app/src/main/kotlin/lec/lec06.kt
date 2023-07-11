@@ -1,4 +1,4 @@
-package lec06
+package lec
 
 // 6강. Junit5 사용법과 테스트 코드 리펙토링
 // Junit5에서 자주 사용되는 5가지 어노테이션

@@ -1,4 +1,4 @@
-package lec11
+package lec
 
 // #2 Java 서버를 Kotlin 서버로 리펙토링 하자! 목표
 // 1. Java로 작성된 도서관리 애플리케이션을 Kotlin으로 완전히 리팩토링 한다.

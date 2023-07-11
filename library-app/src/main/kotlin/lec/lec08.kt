@@ -1,4 +1,4 @@
-package lec08
+package lec
 
 // 8강. 유저 관련 기능 테스트 작성하기
 
