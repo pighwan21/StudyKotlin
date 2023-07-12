@@ -7,6 +7,7 @@ import com.group.libraryapp.domain.user.User
 import com.group.libraryapp.domain.user.UserRepository
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistoryRepository
+import com.group.libraryapp.domain.user.loanhistory.UserLoanStatus
 import com.group.libraryapp.dto.book.request.BookLoanRequest
 import com.group.libraryapp.dto.book.request.BookRequest
 import com.group.libraryapp.dto.book.request.BookReturnRequest
@@ -65,7 +66,7 @@ class BookServiceTest @Autowired constructor(
         assertThat(results).hasSize(1)
         assertThat(results[0].bookName).isEqualTo("늑대와 향신료")
         assertThat(results[0].user.id).isEqualTo(savedUser.id)
-        assertThat(results[0].isReturn).isFalse
+        assertThat(results[0].status).isEqualTo(UserLoanStatus.LOANED)
     }
 
     @Test
@@ -74,7 +75,7 @@ class BookServiceTest @Autowired constructor(
         // given
         bookRepository.save(Book.fixture("나의 라임 오렌지 나무"))
         val savedUser = userRepository.save(User("제제", 12))
-        userLoanHistoryRepository.save(UserLoanHistory(savedUser, "나의 라임 오렌지 나무", false))
+        userLoanHistoryRepository.save(UserLoanHistory.fixture(savedUser, "나의 라임 오렌지 나무"))
         val request = BookLoanRequest("제제", "나의 라임 오렌지 나무")
 
         // when & then
@@ -95,7 +96,7 @@ class BookServiceTest @Autowired constructor(
                 19
             )
         )
-        userLoanHistoryRepository.save(UserLoanHistory(savedUser, "세상의 중심에서 사랑을 외치다", false))
+        userLoanHistoryRepository.save(UserLoanHistory.fixture(savedUser, "세상의 중심에서 사랑을 외치다"))
         val request = BookReturnRequest("나가사와 마사미", "세상의 중심에서 사랑을 외치다")
 
         // when
@@ -104,6 +105,6 @@ class BookServiceTest @Autowired constructor(
         // then
         val results = userLoanHistoryRepository.findAll()
         assertThat(results).hasSize(1)
-        assertThat(results[0].isReturn).isTrue
+        assertThat(results[0].status).isEqualTo(UserLoanStatus.RETURNED)
     }
 }
