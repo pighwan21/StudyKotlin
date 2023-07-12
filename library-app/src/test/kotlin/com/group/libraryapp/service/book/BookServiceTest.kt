@@ -35,7 +35,7 @@ class BookServiceTest @Autowired constructor(
     @DisplayName("책 등록이 정상 동작한다.")
     fun saveBookTest() {
         // given
-        val request = BookRequest("토라도라")
+        val request = BookRequest("토라도라", "라노벨")
 
         // when
         bookService.saveBook(request)
@@ -44,13 +44,14 @@ class BookServiceTest @Autowired constructor(
         val books = bookRepository.findAll()
         assertThat(books).hasSize(1)
         assertThat(books[0].name).isEqualTo("토라도라")
+        assertThat(books[0].type).isEqualTo("라노벨")
     }
 
     @Test
     @DisplayName("책 대출이 정상 동작한다.")
     fun loanBookTest() {
         // given
-        bookRepository.save(Book("늑대와 향신료"))    // 여긴 코틀린 코드이기 때문에 default parameter를 인식해서
+        bookRepository.save(Book.fixture("늑대와 향신료"))    // 여긴 코틀린 코드이기 때문에 default parameter를 인식해서
                                                           // 따로 id부분을 적어주지않아도 됨.
         val savedUser = userRepository.save(User("호로", null))
         val request = BookLoanRequest("호로", "늑대와 향신료")
@@ -70,7 +71,7 @@ class BookServiceTest @Autowired constructor(
     @DisplayName("책이 진작 대출되어 있다면, 신규 대출이 실패한다.")
     fun loanBookFailTest() {
         // given
-        bookRepository.save(Book("나의 라임 오렌지 나무"))
+        bookRepository.save(Book.fixture("나의 라임 오렌지 나무"))
         val savedUser = userRepository.save(User("제제", 12))
         userLoanHistoryRepository.save(UserLoanHistory(savedUser, "나의 라임 오렌지 나무", false))
         val request = BookLoanRequest("제제", "나의 라임 오렌지 나무")
@@ -86,7 +87,7 @@ class BookServiceTest @Autowired constructor(
     @DisplayName("책 반납이 정상 동작한다.")
     fun returnBookTest() {
         // given
-        bookRepository.save(Book("세상의 중심에서 사랑을 외치다"))
+        bookRepository.save(Book.fixture("세상의 중심에서 사랑을 외치다"))
         val savedUser = userRepository.save(
             User(
                 "나가사와 마사미",
