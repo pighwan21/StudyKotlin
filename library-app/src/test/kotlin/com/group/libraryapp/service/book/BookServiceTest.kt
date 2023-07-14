@@ -145,14 +145,14 @@ class BookServiceTest @Autowired constructor(
         assertThat(results).hasSize(2)
 //        val computerDto = results.first { result -> result.type == BookType.COMPUTER }
 //        assertThat(computerDto.count).isEqualTo(2)
-        assertCount(results, BookType.COMPUTER, 2)
+        assertCount(results, BookType.COMPUTER, 2L)
 
 //        val mysteryDto = results.first { result -> result.type == BookType.MYSTERY }
 //        assertThat(mysteryDto.count).isEqualTo(1)
-        assertCount(results, BookType.MYSTERY, 1)
+        assertCount(results, BookType.MYSTERY, 1L)
     }
 
-    private fun assertCount(results: List<BookStatResponse>, type: BookType, count: Int) {
+    private fun assertCount(results: List<BookStatResponse>, type: BookType, count: Long) {
         assertThat(results.first { result -> result.type == type}.count).isEqualTo(count)
     } // 요 함수를 맹글어 위의 코드를 리팩토링 가능.
       // (then절에 있는 반복된 구문을 private function으로 통일함으로써 좀더 깔끔한 코드를 맹글 수 잇다~)
