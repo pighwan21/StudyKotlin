@@ -9,4 +9,5 @@ enum class BookType {
     SOCIETY,
     LANGUAGE,
     SCIENCE,
+    MYSTERY,
 }
