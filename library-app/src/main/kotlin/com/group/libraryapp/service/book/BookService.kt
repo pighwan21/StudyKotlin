@@ -45,7 +45,7 @@ class BookService(
 
     @Transactional(readOnly = true)
     fun countLoanedBook(): Int {
-        return userLoanHistoryRepository.findAllByStatus(UserLoanStatus.LOANED).size
+        return userLoanHistoryRepository.countByStatus(UserLoanStatus.LOANED).toInt()
     }
 
     @Transactional(readOnly = true)
@@ -59,11 +59,11 @@ class BookService(
 //        return results
         // 위의 코드를 아래처럼 리팩토링 가능. 그럼 BookStatResponse 클래스의 불필요한 plusOne 함수도 없앨 수 있음.
 
-        return bookRepository.findAll()         // List<Book>
-            .groupBy { book -> book.type }      // Map<BookType, List<Book>>
-            .map { (type, books) -> BookStatResponse(type, books.size) } // List<BookStatResponse>
-
-
+//        return bookRepository.findAll()         // List<Book>
+//            .groupBy { book -> book.type }      // Map<BookType, List<Book>>
+//            .map { (type, books) -> BookStatResponse(type, books.size) } // List<BookStatResponse>
+        // 위의 코드를 아래처럼 리팩토링 가능. group by 쿼리를 이용.
+        return bookRepository.getStats()
 
 
     }
