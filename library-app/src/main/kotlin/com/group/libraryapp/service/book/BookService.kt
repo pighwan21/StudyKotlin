@@ -9,6 +9,7 @@ import com.group.libraryapp.dto.book.request.BookLoanRequest
 import com.group.libraryapp.dto.book.request.BookRequest
 import com.group.libraryapp.dto.book.request.BookReturnRequest
 import com.group.libraryapp.dto.book.response.BookStatResponse
+import com.group.libraryapp.repository.book.BookQuerydslRepository
 import com.group.libraryapp.util.fail
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class BookService(
     private val bookRepository: BookRepository,
+    private val bookQuerydslRepository: BookQuerydslRepository,
     private val userRepository: UserRepository,
     private val userLoanHistoryRepository: UserLoanHistoryRepository
 ) {
@@ -63,8 +65,9 @@ class BookService(
 //            .groupBy { book -> book.type }      // Map<BookType, List<Book>>
 //            .map { (type, books) -> BookStatResponse(type, books.size) } // List<BookStatResponse>
         // 위의 코드를 아래처럼 리팩토링 가능. group by 쿼리를 이용.
-        return bookRepository.getStats()
-
+//        return bookRepository.getStats()
+        // 위의 코드를 querysdl을 이용해서 아래처럼 리팩토링 가능.
+        return bookQuerydslRepository.getStats()
 
     }
 
